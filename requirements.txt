@@ -1,9 +1,7 @@
-streamlit>=1.37
-pandas>=2.0
-matplotlib>=3.7
-openpyxl>=3.1
-reportlab>=3.6
-numpy>=1.24
-plotly>=5.22
-networkx>=3.2
-scikit-learn>=1.3
+streamlit
+pandas
+numpy
+matplotlib
+openpyxl
+reportlab
+python-docx
