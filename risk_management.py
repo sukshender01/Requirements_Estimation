@@ -1,25 +1,22 @@
-# risk_management.py
 import streamlit as st
 import pandas as pd
 
-DEFAULT_RISKS = [
-    {"Risk":"Unclear requirements","Category":"Scope","Likelihood":"High","Impact":"High","Mitigation":"Clarify via workshops, add spikes"},
-    {"Risk":"Third-party API delays","Category":"Dependency","Likelihood":"Medium","Impact":"High","Mitigation":"Parallel integration tasks, fallbacks"},
-    {"Risk":"Regulatory compliance","Category":"Compliance","Likelihood":"Low","Impact":"High","Mitigation":"Legal review early"}
-]
+def render_risks_and_mitigations(conf, features):
+    st.subheader("📌 Risk Management & Assumptions")
 
-def render_risks_and_mitigations(assumptions, features):
-    st.markdown("**Assumptions used**")
-    st.write(assumptions)
-    st.markdown("**Risk register (editable)**")
-    df = pd.DataFrame(DEFAULT_RISKS)
-    edited = st.experimental_data_editor(df, num_rows="dynamic")
-    st.markdown("**RACI for top risks (suggested)**")
-    raci = {"Risk": [], "Responsible": [], "Accountable": [], "Consulted": [], "Informed": []}
-    for r in edited["Risk"].head(3).tolist():
-        raci["Risk"].append(r)
-        raci["Responsible"].append("Dev Lead")
-        raci["Accountable"].append("Project Manager")
-        raci["Consulted"].append("Architect")
-        raci["Informed"].append("Stakeholders")
-    st.table(pd.DataFrame(raci))
+    risks = [
+        {"Risk": "Unclear requirements", "Impact": "High", "Mitigation": "Conduct clarification workshops"},
+        {"Risk": "Underestimated complexity", "Impact": "Medium", "Mitigation": "Add buffer effort (20%)"},
+        {"Risk": "Team skill gap", "Impact": "Medium", "Mitigation": "Provide training / hire experts"},
+        {"Risk": "Scope creep", "Impact": "High", "Mitigation": "Strict change management"},
+    ]
+
+    df = pd.DataFrame(risks)
+
+    st.markdown("### ✍️ Editable Risk Register")
+    edited = st.data_editor(df, num_rows="dynamic")  # ✅ FIXED (no more experimental_ prefix)
+
+    st.markdown("### ✅ Final Risks & Mitigations")
+    st.dataframe(edited)
+
+    return edited
