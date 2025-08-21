@@ -1,18 +1,26 @@
 # app.py - main Streamlit app (root)
+import sys, os
 import streamlit as st
+
+# Ensure local flat .py files are importable
+sys.path.append(os.path.dirname(__file__))
+
 from input_handler import get_requirements_text
 from feature_extraction import extract_features
 from assumptions import AssumptionsUI, load_default_assumptions
 from estimators import run_selected_estimators, EstimationTechniquesList
 from team_planner import plan_team_and_sprints
 from charts import render_charts, create_gantt_figure
-import sys, os
-sys.path.append(os.path.dirname(__file__))
 from export_utils import build_export_packages
 from help_notes import render_help_notes
 from risk_management import render_risks_and_mitigations
 
-st.set_page_config(page_title="Effort Estimation Suite", layout="wide", initial_sidebar_state="expanded")
+
+st.set_page_config(
+    page_title="Effort Estimation Suite",
+    layout="wide",
+    initial_sidebar_state="expanded"
+)
 
 st.title("🧮 Effort Estimation Suite — Modular (flat files)")
 
@@ -41,7 +49,7 @@ features = extract_features(requirements_text)
 st.subheader("🔎 Identified Features")
 st.table({"Feature (extracted)": features[:200]})
 
-# Run estimators (returns per-technique results & per-feature breakdown where applicable)
+# Run estimators
 estimation_results, per_feature_df = run_selected_estimators(
     techniques=selected,
     requirements_text=requirements_text,
@@ -87,8 +95,18 @@ exports = build_export_packages(
 
 col1, col2 = st.columns(2)
 with col1:
-    st.download_button("⬇️ Download Excel (.xlsx)", exports["excel_bytes"], file_name="estimation_report.xlsx", mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    st.download_button(
+        "⬇️ Download Excel (.xlsx)",
+        exports["excel_bytes"],
+        file_name="estimation_report.xlsx",
+        mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    )
 with col2:
-    st.download_button("⬇️ Download PDF (.pdf)", exports["pdf_bytes"], file_name="estimation_report.pdf", mime="application/pdf")
+    st.download_button(
+        "⬇️ Download PDF (.pdf)",
+        exports["pdf_bytes"],
+        file_name="estimation_report.pdf",
+        mime="application/pdf"
+    )
 
 st.success("Done — export buttons above provide single-click download (no double-click).")
