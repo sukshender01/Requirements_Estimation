@@ -1,12 +1,12 @@
-# Streamlit & UI
+# UI
 streamlit==1.26.0
 rich>=14.0.0,<15
 plotly==5.17.0
 matplotlib==3.7.2
 
-# Data processing
-pandas==2.0.3
+# Data
 numpy==1.25.2
+pandas==2.0.3
 Pillow==9.6.0
 
 # Document processing
@@ -19,7 +19,7 @@ reportlab>=4.0
 nltk>=3.9.1
 scikit-learn>=1.3.2
 
-# Optional utilities
+# Optional
 markdown-it-py>=2.2.0
 mdurl~=0.1
 pygments<3.0.0,>=2.13.0
