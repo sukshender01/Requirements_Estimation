@@ -6,6 +6,8 @@ from assumptions import AssumptionsUI, load_default_assumptions
 from estimators import run_selected_estimators, EstimationTechniquesList
 from team_planner import plan_team_and_sprints
 from charts import render_charts, create_gantt_figure
+import sys, os
+sys.path.append(os.path.dirname(__file__))
 from export_utils import build_export_packages
 from help_notes import render_help_notes
 from risk_management import render_risks_and_mitigations
