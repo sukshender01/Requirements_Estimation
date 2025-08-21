@@ -6,8 +6,8 @@ matplotlib==3.7.2
 
 # Data processing
 pandas==2.0.3
-numpy==1.25.2   # 1.26.x has limited Python 3.12 support
-Pillow==9.6.0   # prebuilt wheel for Python 3.12
+numpy==1.25.2
+Pillow==9.6.0
 
 # Document processing
 python-docx>=0.8.11
