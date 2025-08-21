@@ -1,8 +1,35 @@
-streamlit
-pandas
-numpy
-matplotlib
-openpyxl
-reportlab
-python-docx
-PyPDF2
+# Streamlit UI
+streamlit==1.27.1
+
+# Document parsing
+python-docx==0.8.12
+PyPDF2==3.1.0
+pdfplumber==0.10.0
+
+# Excel export
+openpyxl==3.1.2
+pandas==2.1.0
+xlsxwriter==3.1.2
+
+# PDF generation
+reportlab==4.0.2
+
+# Plotting & charts
+matplotlib==3.8.0
+seaborn==0.12.2
+plotly==5.18.0
+gantt==0.0.9  # optional if using Gantt charts (or implement with matplotlib/plotly)
+
+# NLP for AI-based estimations
+nltk==3.9.0
+transformers==4.33.2
+torch==2.1.0
+
+# Optional: file handling
+python-magic==0.4.27
+
+# Dataframes for Streamlit tables
+numpy==1.26.0
+
+# Extras
+PyYAML==6.0  # if you use config files
