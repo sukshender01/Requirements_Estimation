@@ -1,0 +1,3 @@
+# Estimation Tool Prompt
+(This file contains the detailed specification for the Streamlit estimation tool.)
+... (content from the previous detailed prompt will go here) ...
